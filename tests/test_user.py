@@ -1,7 +1,9 @@
+from random import randint
 from unittest import TestCase
 from faker import Faker
 from flask import json
 from app import app
+from models.models import UserType
 
 class TestUser(TestCase):
   def setUp(self):
@@ -12,7 +14,8 @@ class TestUser(TestCase):
   def test_register_user(self):
     new_user = {
       'username': self.faker.user_name(),
-      'password': self.faker.password()
+      'password': self.faker.password(),
+      'user_type': UserType.CLIENT.value if randint(0, 9) % 2 == 0 else UserType.CLIENT_USER.value
     }
     
     register_user_request = self.client.post('register', data = json.dumps(new_user), headers = self.request_headers)
@@ -29,7 +32,8 @@ class TestUser(TestCase):
   def test_login_user(self):
     new_user = {
       'username': self.faker.user_name(),
-      'password': self.faker.password()
+      'password': self.faker.password(),
+      'user_type': UserType.CLIENT.value if randint(0, 9) % 2 == 0 else UserType.CLIENT_USER.value
     }
     
     register_user_request = self.client.post('register', data = json.dumps(new_user), headers = self.request_headers)

@@ -2,15 +2,17 @@ from datetime import timedelta
 from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import create_access_token
-from models import db, User 
+from models import db, User
+from models.models import UserType 
 
 class UserView(Resource):
   
-  def post(self):    
+  def post(self): 
     
     new_user = User(
       username = request.json['username'],
-      password = request.json['password']
+      password = request.json['password'],
+      user_type = UserType.CLIENT.value if request.json['user_type'] == UserType.CLIENT.value else UserType.CLIENT_USER.value
     )
     
     try:
