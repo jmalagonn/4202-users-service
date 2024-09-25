@@ -7,6 +7,15 @@ from models.models import UserType
 
 class UserView(Resource):
   
+  def get(self, username):
+    
+    user = User.query.filter_by(username = username).scalar()
+    
+    if user is None:
+      return False, 404
+    else:
+      return { "username": user.username, "user_type": user.user_type }
+  
   def post(self): 
     
     new_user = User(
@@ -50,6 +59,7 @@ class LoginView(Resource):
             identity={
                 "id": user.id,
                 "username": user.username,
+                "user_type": user.user_type
             },
             expires_delta=timedelta(days=1),
         )
