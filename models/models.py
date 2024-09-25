@@ -9,6 +9,7 @@ class User(db.Model):
   username = db.Column(db.String(128))
   password = db.Column(db.String(128))
   user_type = db.Column(db.Integer)
+  twofa_secret = db.Column(db.String(16))
    
 
 class UsuerSchema(SQLAlchemyAutoSchema):
