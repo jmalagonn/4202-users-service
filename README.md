@@ -6,7 +6,6 @@
 |Juan Nicolas Malagón Navarro | jn.malagon@uniandes.edu.co |
 |Manuel Sanchez Ballen| mg.sanchezb1@uniandes.edu.co |
 |Sergio Arturo Perez Rincon | sa.perezr12@uniandes.edu.co |
-|Oscar Ivan Manco Racines| o.manco@uniandes.edu.co |
 
 ## Pasos para la ejecución
 
